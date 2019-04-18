@@ -1,4 +1,6 @@
 import IAction from './IAction'
+import { dealService } from "../../service/deal/DealService"
+import UtilAction from "../action/UtilAction"
 
 export default class AppAction {
     public static readonly GET_DEALS: string = 'AppAction.GET_DEALS'
@@ -6,10 +8,26 @@ export default class AppAction {
     public static readonly SHOW_DEAL_LIST: string = 'AppAction.SHOW_DEAL_LIST'
     public static readonly SHOW_DEAL_DETAIL: string = 'AppAction.SHOW_DEAL_DETAIL'
 
-    public static getDeals = (searchTerm?: string | ''): IAction<String, void> => {
-        return {
-            payload: searchTerm,
-            type: AppAction.GET_DEALS
+    public static getDeals = (searchTerm: string | ''): any => {
+        return async (dispatch: any, ) => {
+            try {
+                dispatch ({
+                    type: AppAction.GET_DEALS,
+                    searchTerm: searchTerm
+                })
+                dispatch ({
+                    type: AppAction.DEALS_LOADED,
+                    searchTerm: searchTerm,
+                    payload: await dealService.searchData(searchTerm)
+                })
+            }
+            catch (_) {
+                dispatch ({
+                    type: UtilAction.ERROR,
+                    errorMessage: "Cannot load deals"
+                })
+    
+            }
         }
     }
 

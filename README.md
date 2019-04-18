@@ -9,7 +9,7 @@ Step to run
 
 Define actions 
 
-```
+```typescript
 import IAction from './IAction'
 import { dealService } from "../../service/deal/DealService"
 import UtilAction from "../action/UtilAction"
@@ -60,7 +60,7 @@ export default class AppAction {
 
 Define reducer 
 
-```
+```typescript
 import AppState from "../state/AppState"
 import { iDataState } from "../state/IState"
 import IAction from "../action/IAction"

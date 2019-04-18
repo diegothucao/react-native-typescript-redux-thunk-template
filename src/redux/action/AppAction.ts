@@ -13,12 +13,12 @@ export default class AppAction {
             try {
                 dispatch ({
                     type: AppAction.GET_DEALS,
-                    searchTerm: searchTerm
+                    payload: searchTerm
                 })
+                let data = await dealService.searchData(searchTerm)
                 dispatch ({
                     type: AppAction.DEALS_LOADED,
-                    searchTerm: searchTerm,
-                    payload: await dealService.searchData(searchTerm)
+                    data: data
                 })
             }
             catch (_) {

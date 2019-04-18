@@ -12,14 +12,14 @@ export default class DealDetailAction {
             try {
                  dispatch({
                         type: DealDetailAction.INITIAL_DETAIL,
-                        payload: deal
+                        data: deal
                     })
                     dispatch({
                         type: DealDetailAction.DEAL_FETCH_DETAIL
                     })
                 dispatch({
                     type: DealDetailAction.DEAL_FETCHED,
-                    payload: await dealService.fetchById(deal.key)
+                    data: await dealService.fetchById(deal.key)
                 })
             }
             catch (_) {

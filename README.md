@@ -1,4 +1,4 @@
-# react-native-typescript-redux-thunk-example
+# React Native Typescript and Redux-thunk
 This is an essential example to build react-native app using typescript and Redux Thunk
 
 Step to run
